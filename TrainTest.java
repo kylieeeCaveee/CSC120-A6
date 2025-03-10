@@ -6,18 +6,32 @@ public class TrainTest {
     // Engine Tests
     @Test
     public void testEngineConstructor() {
-        fail();
+        Engine testingEngine= new Engine(FuelType.STEAM, 100.0, 200.0); 
+        assertEquals(FuelType.STEAM, testingEngine.getFuelType()); 
+        double expectedFuel= 100.0; 
+        double actualFuel= testingEngine.getCurrentFuel(); 
+        assertEquals(expectedFuel, actualFuel,0); 
     }
 
     @Test
     public void testEngineGo() {
-        fail();
+        Engine testingEngine= new Engine(FuelType.STEAM, 100.0, 200.0);
+        double expectedValue= 95.0; 
+        testingEngine.go(); 
+        double actualValue= testingEngine.getCurrentFuel(); 
+        assertEquals(expectedValue, actualValue, 0.0);
     }
 
     // Car Tests
     @Test
     public void testCarAddPassenger() {
-        fail();
+        Car testCar= new Car(1); 
+        Passenger Kylie = new Passenger("Kylie"); 
+        int expectedValue= 0; 
+        testCar.addPassenger(Kylie); 
+        int actualValue= testCar.seatsRemaining(); 
+        assertEquals(expectedValue, actualValue); 
+ 
     }
 
     @Test
