@@ -1,7 +1,7 @@
 import java.util.ArrayList; 
 public class Train implements TrainRequirements
 {
-    private ArrayList<Car> carList; 
+    ArrayList<Car> carList; 
     private Engine engine; 
 
     /**

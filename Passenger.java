@@ -16,13 +16,11 @@ public class Passenger implements PassengerRequirements{
      */
     public void boardCar(Car c)
     {
-        if (c.addPassenger(this)==true)
-        {
+        if (c.addPassenger(this)==true){
             System.out.println("Passenger Boarded");
         }
-        else
-        {
-            System.out.println("The selected car is full.");
+        else{
+            throw new RuntimeException("The selected car is full");
         }
     
     }
@@ -58,7 +56,12 @@ public class Passenger implements PassengerRequirements{
         Passenger Kylie= new Passenger("Kylie"); 
         Kylie.boardCar(testingCar);
         Passenger Katie= new Passenger("Katie"); 
-        Katie.boardCar(testingCar);
+        try{
+            Katie.boardCar(testingCar);
+        }
+        catch (RuntimeException e){
+            System.out.println(e.getLocalizedMessage()); 
+        }
         testingCar.printManifest();
         Kylie.getOffCar(testingCar); 
         testingCar.printManifest();

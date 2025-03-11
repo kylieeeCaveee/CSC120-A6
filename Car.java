@@ -60,7 +60,7 @@ public Boolean addPassenger (Passenger P)
  */
 public Boolean removePassenger(Passenger P)
 {
-    if (this.passengerlist.contains(P)==true)
+    if (this.passengerlist.contains(P))
     {
         this.passengerlist.remove(P); 
         return true; 
