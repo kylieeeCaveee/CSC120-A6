@@ -1,20 +1,19 @@
 public class Engine implements EngineRequirements{
 
     private FuelType f; 
-    private double CurrentFuelLevel; 
-    private double MaxFuelLevel; 
+    private double currentFuelLevel; 
+    private double maxFuelLevel; 
 
     /**
      * Constructor for Engine
      * @param f Engine's fuel type
-     * @param CurrentFuelLevel Engine's current fuel level
-     * @param MaxFuelLevel Engine's max fuel level
+     * @param currentFuelLevel Engine's current fuel level
+     * @param maxFuelLevel Engine's max fuel level
      */
-    public Engine(FuelType f, double CurrentFuelLevel, double MaxFuelLevel )
-    {
+    public Engine(FuelType f, double currentFuelLevel, double maxFuelLevel ){
         this.f= f; 
-        this.CurrentFuelLevel= CurrentFuelLevel; 
-        this.MaxFuelLevel= MaxFuelLevel; 
+        this.currentFuelLevel= currentFuelLevel; 
+        this.maxFuelLevel= maxFuelLevel; 
     }
 
     
@@ -22,17 +21,15 @@ public class Engine implements EngineRequirements{
      * toString method for Engine that formats the print function for method.
      * @return a formatted string that prints out the engines attributes
      */
-    public String toString()
-    {
-        return "Engine has fuel type: "+ this.f+ " current fuel level: "+ this.CurrentFuelLevel+ " and max fuel level: "+ this.MaxFuelLevel; 
+    public String toString(){
+        return "Engine has fuel type: "+ this.f+ " current fuel level: "+ this.currentFuelLevel+ " and max fuel level: "+ this.maxFuelLevel; 
     }
 
     /**
      * acessor method for fuel type
      * @return the fuel type for the engine
      */
-    public FuelType getFuelType()
-    {
+    public FuelType getFuelType(){
         return this.f; 
     }
 
@@ -40,47 +37,39 @@ public class Engine implements EngineRequirements{
      * acessor for the max fuel 
      * @return the double of max fuel for the engine
      */
-    public double getMaxFuel()
-    {
-        return CurrentFuelLevel= this.MaxFuelLevel; 
+    public double getMaxFuel(){
+        return this.maxFuelLevel; 
     }
 
     /**
-     * acessor methof for the current fuel
+     * acessor method for the current fuel
      * @return the double of current fuel for the engine
      */
-    public double getCurrentFuel()
-    {
-        return this.CurrentFuelLevel; 
+    public double getCurrentFuel(){
+        return this.currentFuelLevel; 
     }
     /**
      * this method sets the engine's current fuel to the max fuel level
      */
-    public void refuel()
-    {
-        this.CurrentFuelLevel= this.MaxFuelLevel; 
+    public void refuel(){
+        this.currentFuelLevel= this.maxFuelLevel; 
     }
 
     /**
      * The go method decreases the current fuel level by 5, prints how much fuel is left, and returns if the fuel level is above zero.
      * @return T/F is fuel level above zero
      */
-    public Boolean go()
-    {
-        if (CurrentFuelLevel>0)
-        {
-            this.CurrentFuelLevel= this.CurrentFuelLevel-5; 
-        System.out.println("Current Fuel Level: "+ this.CurrentFuelLevel);
-        } 
-        else {
+    public Boolean go(){
+        if (currentFuelLevel>0){
+            this.currentFuelLevel= this.currentFuelLevel-5; 
+        System.out.println("Current Fuel Level: "+ this.currentFuelLevel);
+        }else{
             System.out.println("Fuel level is too low to run.");
-         } 
-        return CurrentFuelLevel>0;
-
+        } 
+        return currentFuelLevel>0; 
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Engine myEngine= new Engine(FuelType.ELECTRIC, 0.0, 100.0); 
         System.out.println(myEngine); 
         System.out.println(myEngine.getCurrentFuel()); 
@@ -90,8 +79,7 @@ public class Engine implements EngineRequirements{
         System.out.println(myOtherEngine); 
         myOtherEngine.refuel(); 
         Engine trialEngine = new Engine(FuelType.ELECTRIC, 100.0, 100.0);
-        while (trialEngine.go()) 
-        {
+        while (trialEngine.go()){
             System.out.println("Choo choo!");
         }
         System.out.println("Out of fuel.");

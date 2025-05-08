@@ -26,9 +26,9 @@ public class TrainTest {
     @Test
     public void testCarAddPassenger() {
         Car testCar= new Car(1); 
-        Passenger Kylie = new Passenger("Kylie"); 
+        Passenger kylie = new Passenger("Kylie"); 
         int expectedValue= 0; 
-        testCar.addPassenger(Kylie); 
+        testCar.addPassenger(kylie); 
         int actualValue= testCar.seatsRemaining(); 
         assertEquals(expectedValue, actualValue); 
  
@@ -37,23 +37,23 @@ public class TrainTest {
     @Test
     public void testCarRemovePassenger() {
         Car testCar= new Car(1); 
-        Passenger Kylie = new Passenger("Kylie");
-        Passenger Caden= new Passenger("Caden"); 
-        testCar.addPassenger(Kylie); 
+        Passenger kylie = new Passenger("Kylie");
+        Passenger caden= new Passenger("Caden"); 
+        testCar.addPassenger(kylie); 
         int expectedValue= 1; 
-        testCar.removePassenger(Kylie); 
+        testCar.removePassenger(kylie); 
         int actualValue= testCar.seatsRemaining(); 
         assertEquals(expectedValue, actualValue); 
-        assertFalse(testCar.removePassenger(Caden)); 
+        assertFalse(testCar.removePassenger(caden)); 
     }
 
     // Passenger Tests
     @Test
     public void testPassengerBoardCarWithSpace() {
         Car testCar= new Car(1); 
-        Passenger Kylie = new Passenger("Kylie");
+        Passenger kylie = new Passenger("Kylie");
         int expectedValue= 0; 
-        Kylie.boardCar(testCar);
+        kylie.boardCar(testCar);
         int actualValue= testCar.seatsRemaining(); 
         assertEquals(expectedValue, actualValue); 
 
@@ -62,10 +62,10 @@ public class TrainTest {
     @Test(expected= RuntimeException.class)
     public void testPassengerBoardCarFull() {
         Car testCar= new Car(1); 
-        Passenger Kylie = new Passenger("Kylie");
-        Kylie.boardCar(testCar);
-        Passenger Katie = new Passenger("Katie");
-        Katie.boardCar(testCar);
+        Passenger kylie = new Passenger("Kylie");
+        kylie.boardCar(testCar);
+        Passenger katie = new Passenger("Katie");
+        katie.boardCar(testCar);
     }
 
     // Train Tests
@@ -81,21 +81,21 @@ public class TrainTest {
     @Test
     public void testTrainPassengerCount() {
         Train testingTrain= new Train(FuelType.ELECTRIC, 100.0, 10, 10);
-        Passenger Kylie = new Passenger("Kylie");
-        Passenger Caden = new Passenger("Caden"); 
-        Kylie.boardCar(testingTrain.getCar(1));
+        Passenger kylie = new Passenger("Kylie");
+        Passenger caden = new Passenger("Caden"); 
+        kylie.boardCar(testingTrain.getCar(1));
         int firstEValue= 99; 
         int firstAValue= testingTrain.seatsRemaining(); 
         assertEquals(firstEValue, firstAValue); 
-        Caden.boardCar(testingTrain.getCar(1));
+        caden.boardCar(testingTrain.getCar(1));
         int SecondEValue= 98; 
         int SecondAValue= testingTrain.seatsRemaining(); 
         assertEquals(SecondEValue, SecondAValue); 
-        Caden.getOffCar(testingTrain.getCar(1));
+        caden.getOffCar(testingTrain.getCar(1));
         int thirdEValue= 99; 
         int thirdAValue= testingTrain.seatsRemaining(); 
         assertEquals(thirdEValue, thirdAValue); 
-        Kylie.getOffCar(testingTrain.getCar(1));
+        kylie.getOffCar(testingTrain.getCar(1));
         int fourthEValue= 100; 
         int fourthAValue= testingTrain.seatsRemaining(); 
         assertEquals(fourthEValue, fourthAValue); 
@@ -104,7 +104,7 @@ public class TrainTest {
     @Test
     public void testTrainGetCar() {
         Train testingTrain= new Train(FuelType.ELECTRIC, 100.0, 10, 10);
-        Car expectedCar= testingTrain.carList.get(1); 
+        Car expectedCar= testingTrain.getCarList().get(1); 
         Car actualCar= testingTrain.getCar(1); 
         assertSame(expectedCar, actualCar);
     }
@@ -112,10 +112,10 @@ public class TrainTest {
     @Test
     public void testTrainPrintManifest() {
         Train testingTrain= new Train(FuelType.ELECTRIC, 100.0, 10, 10);
-        Passenger Kylie = new Passenger("Kylie");
-        Passenger Caden = new Passenger("Caden"); 
-        Kylie.boardCar(testingTrain.getCar(1));
-        Caden.boardCar(testingTrain.getCar(9));
+        Passenger kylie = new Passenger("Kylie");
+        Passenger caden = new Passenger("Caden"); 
+        kylie.boardCar(testingTrain.getCar(1));
+        caden.boardCar(testingTrain.getCar(9));
         testingTrain.printManifest();
 
     }

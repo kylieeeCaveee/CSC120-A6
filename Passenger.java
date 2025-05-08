@@ -14,30 +14,23 @@ public class Passenger implements PassengerRequirements{
      * This method has the passenger board a car if has space.
      * @param c this is the car that the passenger would be added to if successful. 
      */
-    public void boardCar(Car c)
-    {
+    public void boardCar(Car c){
         if (c.addPassenger(this)==true){
             System.out.println("Passenger Boarded");
-        }
-        else{
+        }else{
             throw new RuntimeException("The selected car is full");
         }
-    
     }
 
     /**
      * This method removes the passenger from the car if they are currently aboard that car.
      * @param c this is the car that the passenger will be removed from. 
      */
-    public void getOffCar(Car c)
-    {
-        if (c.removePassenger(this)==true)
-        {
+    public void getOffCar(Car c){
+        if (c.removePassenger(this)==true){
             System.out.println("Passenger removed from car.");
-        }
-        else
-        {
-            System.out.println("Passnger not onboard this car.");
+        }else{
+            System.out.println("Passenger not onboard this car.");
         }
     }
 
@@ -45,26 +38,19 @@ public class Passenger implements PassengerRequirements{
      * This is the toString function that tells the system how to print out passengers.
      * @return String which is the name of the passenger.
      */
-    public String toString()
-    {
+    public String toString(){
         return this.name; 
     }
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         Car testingCar= new Car(1); 
-        Passenger Kylie= new Passenger("Kylie"); 
-        Kylie.boardCar(testingCar);
-        Passenger Katie= new Passenger("Katie"); 
-        try{
-            Katie.boardCar(testingCar);
-        }
-        catch (RuntimeException e){
-            System.out.println(e.getLocalizedMessage()); 
-        }
+        Passenger kylie= new Passenger("Kylie"); 
+        kylie.boardCar(testingCar);
+        Passenger katie= new Passenger("Katie"); 
+        katie.boardCar(testingCar);
         testingCar.printManifest();
-        Kylie.getOffCar(testingCar); 
+        kylie.getOffCar(testingCar); 
         testingCar.printManifest();
-        Katie.getOffCar(testingCar); 
+        katie.getOffCar(testingCar); 
     }
 }
